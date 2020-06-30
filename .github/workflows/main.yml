@@ -1,0 +1,48 @@
+name: main
+
+on: [push, pull_request]
+
+jobs:
+  php-cs-fixer:
+    name: PHP CS Fixer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: PHP CS Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --diff --dry-run
+
+  test:
+    name: Test PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.2', '7.3', '7.4']
+    container:
+      image: php:${{ matrix.php }}-cli-alpine
+    steps:
+    - name: Set Up Container
+      run: |
+        # https://docs.pact.io/docker#reference-image
+        apk add --no-cache --virtual build-dependencies build-base
+        apk --no-cache add ca-certificates wget bash \
+          && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+          && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk \
+          && apk add glibc-2.29-r0.apk
+        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+        composer global require hirak/prestissimo > /dev/null
+
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Install Dependencies
+      run: composer install
+
+    - name: Test
+      run: |
+        ./vendor/bin/codecept bootstrap
+        ./vendor/bin/codecept build
+        ./vendor/bin/codecept run unit
