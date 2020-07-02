@@ -1,0 +1,34 @@
+{
+    "name":"tienvx/codeception-pact-module",
+    "description":"Codeception Module For PACT",
+    "keywords":["codeception", "pact", "contract testing"],
+    "homepage":"https://github.com/tienvx/codeception-pact-module",
+    "type":"library",
+    "license":"MIT",
+    "authors":[
+        {
+          "name": "Tien Xuan Vo",
+          "email": "tien.xuan.vo@gmail.com",
+          "role": "Developer"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "https://github.com/tienvx/codeception-pact-module/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5",
+        "pact-foundation/pact-php": "^5.0",
+        "codeception/codeception": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeceptionPact\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodeceptionPact\\Tests\\": "tests/"
+        }
+    }
+}
