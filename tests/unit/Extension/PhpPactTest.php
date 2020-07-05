@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeceptionPact\Tests\unit\Module;
+namespace CodeceptionPact\Tests\unit\Extension;
 
 use Amp\Process\ProcessException;
 use Codeception\Event\SuiteEvent;

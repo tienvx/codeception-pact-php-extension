@@ -32,6 +32,8 @@ jobs:
           && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
           && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk \
           && apk add glibc-2.29-r0.apk
+        apk add -q --no-cache $PHPIZE_DEPS git bash libxslt-dev
+        docker-php-ext-install xsl
         curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
         composer global require hirak/prestissimo > /dev/null
 
@@ -42,7 +44,4 @@ jobs:
       run: composer install
 
     - name: Test
-      run: |
-        ./vendor/bin/codecept bootstrap
-        ./vendor/bin/codecept build
-        ./vendor/bin/codecept run unit
+      run: php ./vendor/bin/codecept run unit
