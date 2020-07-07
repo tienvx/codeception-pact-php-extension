@@ -33,11 +33,13 @@ class PhpPactTest extends Unit
     public function testInitSuite()
     {
         $extension = new PhpPact([
-            'PACT_CONSUMER_NAME' => 'ExampleOne',
-            'PACT_PROVIDER_NAME' => 'ExampleAPI',
-            'PACT_OUTPUT_DIR' => '/tmp',
-            'PACT_CONSUMER_VERSION' => '1.0.0',
-            'PACT_CONSUMER_TAG' => 'master',
+            'env' => [
+                'PACT_CONSUMER_NAME' => 'ExampleOne',
+                'PACT_PROVIDER_NAME' => 'ExampleAPI',
+                'PACT_OUTPUT_DIR' => '/tmp',
+                'PACT_CONSUMER_VERSION' => '1.0.0',
+                'PACT_CONSUMER_TAG' => 'master',
+            ]
         ], []);
         $extension->initSuite($this->event);
         $this->assertEquals('ExampleOne', \getenv('PACT_CONSUMER_NAME'));
