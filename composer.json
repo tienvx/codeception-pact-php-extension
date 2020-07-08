@@ -1,8 +1,8 @@
 {
-    "name":"tienvx/codeception-pact-module",
-    "description":"Codeception Module For PACT",
-    "keywords":["codeception", "pact", "contract testing"],
-    "homepage":"https://github.com/tienvx/codeception-pact-module",
+    "name":"tienvx/codeception-pact-php-extension",
+    "description":"Codeception Extensions For PACT PHP",
+    "keywords":["codeception", "extensions", "pact", "contract testing", "pact-php"],
+    "homepage":"https://github.com/tienvx/codeception-pact-php-extension",
     "type":"library",
     "license":"MIT",
     "authors":[
@@ -13,22 +13,22 @@
         },
         {
             "name": "Community contributions",
-            "homepage": "https://github.com/tienvx/codeception-pact-module/contributors"
+            "homepage": "https://github.com/tienvx/codeception-pact-php-extension/contributors"
         }
     ],
     "require": {
         "php": "^7.2.5",
-        "pact-foundation/pact-php": "^5.0",
-        "codeception/codeception": "^4.0"
+        "pact-foundation/pact-php": "^6.0",
+        "codeception/codeception": "^4.1"
     },
     "autoload": {
         "psr-4": {
-            "CodeceptionPact\\": "src/"
+            "CodeceptionPactPhp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CodeceptionPact\\Tests\\": "tests/"
+            "CodeceptionPactPhp\\Tests\\": "tests/"
         }
     }
 }
