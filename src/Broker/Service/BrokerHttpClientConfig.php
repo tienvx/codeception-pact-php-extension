@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeceptionPact\Broker\Service;
+namespace CodeceptionPactPhp\Broker\Service;
 
 trait BrokerHttpClientConfig
 {

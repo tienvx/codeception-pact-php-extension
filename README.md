@@ -1,21 +1,22 @@
-# Codeception PACT Extension
+# Codeception PACT PHP Extensions
 
-[![Build Status](https://github.com/tienvx/codeception-pact-extension/workflows/main/badge.svg)](https://github.com/tienvx/codeception-pact-extension/actions)
+[![Build Status](https://github.com/tienvx/codeception-pact-php-extension/workflows/main/badge.svg)](https://github.com/tienvx/codeception-pact-php-extension/actions)
 
 ## Installation
 
 ```
-composer require --dev "tienvx/codeception-pact-extension"
+composer require --dev "tienvx/codeception-pact-php-extension"
 ```
 
 ## Usage
 
-Enable the extension for your suite:
+Enable the extensions for your suite:
 
 ```yaml
 extensions:
     enabled:
-        - CodeceptionPact\Extension\PhpPact:
+        - CodeceptionPactPhp\Extension\Env:
             PACT_CONSUMER_NAME: BookPublisher
             PACT_PROVIDER_NAME: BookStore
+        - CodeceptionPactPhp\Extension\Pact
 ```
