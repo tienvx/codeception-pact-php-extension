@@ -6,6 +6,7 @@ use Codeception\Event\SuiteEvent;
 use Codeception\Events;
 use Codeception\Extension;
 use CodeceptionPactPhp\Broker\Service\BrokerHttpClientConfig;
+use CodeceptionPactPhp\Standalone\ProviderVerifier\ExtendedVerifier;
 use GuzzleHttp\Psr7\Uri;
 use PhpPact\Broker\Service\BrokerHttpClientInterface;
 use PhpPact\Standalone\ProviderVerifier\Model\VerifierConfig;
@@ -70,7 +71,7 @@ class PactVerify extends Extension
             $this->brokerHttpClient = new BrokerHttpClient($client, new Uri($this->verifierConfig->getBrokerUri()), $this->getHeaders());
         }
         if (!$this->verifier) {
-            $this->verifier = new Verifier($this->verifierConfig, null, null, $this->brokerHttpClient);
+            $this->verifier = new ExtendedVerifier($this->verifierConfig, null, null, $this->brokerHttpClient);
         }
     }
 
