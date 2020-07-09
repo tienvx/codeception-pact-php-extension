@@ -16,8 +16,8 @@ class Env extends Extension
         'PACT_CONSUMER_VERSION' => null,
         'PACT_CONSUMER_TAG' => null,
         'PACT_PROVIDER_NAME' => null,
-        'PACT_PROVIDER_VERSION' => '1.0.0',
-        'PACT_PROVIDER_BASE_URL' => 'http://localhost:58000',
+        'PACT_PROVIDER_VERSION' => null,
+        'PACT_PROVIDER_BASE_URL' => null,
         'PACT_OUTPUT_DIR' => './tests/_output/pact',
         'PACT_CORS' => false,
         'PACT_LOG' => './tests/_output/pact_log',
@@ -41,7 +41,9 @@ class Env extends Extension
     public function initSuite(SuiteEvent $e)
     {
         foreach ($this->config as $key => $value) {
-            putenv("$key=$value");
+            if (!is_null($value)) {
+                putenv("$key=$value");
+            }
         }
     }
 }
