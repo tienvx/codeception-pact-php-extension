@@ -17,10 +17,14 @@ class Env extends Extension
         'PACT_CONSUMER_TAG' => null,
         'PACT_PROVIDER_NAME' => null,
         'PACT_PROVIDER_VERSION' => null,
+        'PACT_PROVIDER_TAG' => null,
         'PACT_PROVIDER_BASE_URL' => null,
         'PACT_OUTPUT_DIR' => './tests/_output/pact',
         'PACT_CORS' => false,
+        // For consumer
         'PACT_LOG' => './tests/_output/pact_log',
+        // For provider
+        'PACT_LOG_DIR' =>  './tests/_output',
         'PACT_MOCK_SERVER_HEALTH_CHECK_TIMEOUT' => 10,
         'PACT_SPECIFICATION_VERSION' => MockServerEnvConfig::DEFAULT_SPECIFICATION_VERSION,
         'PACT_PUBLISH_VERIFICATION_RESULTS' => true,
