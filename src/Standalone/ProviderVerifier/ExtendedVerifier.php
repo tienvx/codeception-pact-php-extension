@@ -16,7 +16,7 @@ class ExtendedVerifier extends Verifier
     {
         $parameters = parent::getArguments();
 
-        if ($brokerToken = \getenv('BROKER_TOKEN')) {
+        if ($brokerToken = \getenv('PACT_BROKER_BEARER_TOKEN')) {
             $parameters[] = "--broker-token={$brokerToken}";
         }
 
