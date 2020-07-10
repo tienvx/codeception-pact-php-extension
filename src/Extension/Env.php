@@ -19,6 +19,7 @@ class Env extends Extension
         'PACT_PROVIDER_VERSION' => null,
         'PACT_PROVIDER_TAG' => null,
         'PACT_PROVIDER_BASE_URL' => null,
+        'PACT_PROVIDER_STATES_SETUP_URL' => null,
         'PACT_OUTPUT_DIR' => './tests/_output/pact',
         'PACT_CORS' => false,
         // For consumer

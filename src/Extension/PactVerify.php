@@ -62,6 +62,7 @@ class PactVerify extends Extension
                 ->setProviderName(\getenv('PACT_PROVIDER_NAME'))
                 ->setProviderVersion(\getenv('PACT_PROVIDER_VERSION'))
                 ->setProviderBaseUrl(new Uri(\getenv('PACT_PROVIDER_BASE_URL')))
+                ->setProviderStatesSetupUrl(\getenv('PACT_PROVIDER_STATES_SETUP_URL'))
                 ->setBrokerUri(new Uri(\getenv('PACT_BROKER_URI')))
                 ->setPublishResults(\getenv('PACT_PUBLISH_VERIFICATION_RESULTS'));
             ;

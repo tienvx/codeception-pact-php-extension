@@ -28,6 +28,7 @@ class EnvTest extends Unit
     public function testInitSuite()
     {
         \putenv("PACT_PROVIDER_BASE_URL=http://localhost:58000");
+        \putenv("PACT_PROVIDER_STATES_SETUP_URL=http://localhost:58000/states-setup");
         \putenv("PACT_BROKER_URI=https://testing-example.pact.dius.com.au");
         \putenv("PACT_BROKER_BEARER_TOKEN=xxxxxx");
 
@@ -52,6 +53,7 @@ class EnvTest extends Unit
         $this->assertEquals('master', \getenv('PACT_CONSUMER_TAG'));
 
         $this->assertEquals('http://localhost:58000', \getenv('PACT_PROVIDER_BASE_URL'));
+        $this->assertEquals('http://localhost:58000/states-setup', \getenv('PACT_PROVIDER_STATES_SETUP_URL'));
         $this->assertEquals('https://testing-example.pact.dius.com.au', \getenv('PACT_BROKER_URI'));
         $this->assertEquals(false, \getenv('PACT_BROKER_HTTP_AUTH_USER'));
         $this->assertEquals(false, \getenv('PACT_BROKER_HTTP_AUTH_PASS'));
