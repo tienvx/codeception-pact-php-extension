@@ -17,9 +17,9 @@
         }
     ],
     "require": {
-        "php": "^7.2.5",
-        "pact-foundation/pact-php": "^6.0",
-        "codeception/codeception": "^4.1"
+        "php": "^8.0",
+        "pact-foundation/pact-php": "^8.1",
+        "codeception/codeception": "^4.2"
     },
     "autoload": {
         "psr-4": {
