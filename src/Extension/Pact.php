@@ -101,7 +101,7 @@ class Pact extends Extension
             }
 
             $this->brokerHttpClient->tag($this->mockServerConfig->getConsumer(), $consumerVersion, $tag);
-            $this->brokerHttpClient->publishJson($json, $consumerVersion);
+            $this->brokerHttpClient->publishJson($consumerVersion, $json);
             print 'Pact file has been uploaded to the Broker successfully.';
         }
     }
