@@ -72,10 +72,18 @@ class Pact extends Extension
         }
     }
 
+    private function shouldUseLocalServer(): bool
+    {
+        return \in_array($this->mockServerConfig->getHost(), ['localhost', '127.0.0.1']);
+    }
+
     public function beforeSuite(SuiteEvent $e)
     {
-        $this->server->start();
+        if ($this->shouldUseLocalServer()) {
+            $this->server->start();
+        }
     }
+
 
     public function afterSuite(SuiteEvent $e)
     {
@@ -83,7 +91,9 @@ class Pact extends Extension
             $this->httpService->verifyInteractions();
             $json = $this->httpService->getPactJson();
         } finally {
-            $this->server->stop();
+            if ($this->shouldUseLocalServer()) {
+                $this->server->stop();
+            }
         }
 
         if ($e->getResult()->failureCount() > 0) {
